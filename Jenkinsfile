@@ -1,17 +1,51 @@
-# Use the official Python image from the Docker Hub
-FROM python:3.9
+pipeline {
+    agent any
 
-# Set the working directory in the container
-WORKDIR /app
+    environment {
+        TF_CLI_ARGS_apply="-auto-approve"
+    }
 
-# Copy the requirements file into the container
-COPY requirements.txt .
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/XI-4568radhakrishna/Fast-api-2.git'
+            }
+        }
 
-# Install the dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+        stage('Init Terraform') {
+            steps {
+                sh 'terraform init'
+            }
+        }
 
-# Copy the FastAPI app code into the container
-COPY ./app /app
+        stage('Validate Terraform') {
+            steps {
+                sh 'terraform validate'
+            }
+        }
 
-# Command to run the FastAPI app
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+        stage('Plan Terraform') {
+            steps {
+                sh 'terraform plan -out=tfplan'
+            }
+        }
+
+        stage('Apply Terraform') {
+            steps {
+                sh 'terraform apply tfplan'
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: '**/*.tfstate', fingerprint: true
+        }
+        success {
+            echo 'Terraform Infrastructure Applied Successfully'
+        }
+        failure {
+            echo 'Terraform Execution Failed'
+        }
+    }
+}
