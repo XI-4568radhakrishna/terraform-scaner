@@ -1,17 +1,37 @@
-# Use the official Python image from the Docker Hub
-FROM python:3.9
+pipeline {
+    agent any
 
-# Set the working directory in the container
-WORKDIR /app
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building...'
+            }
+        }
 
-# Copy the requirements file into the container
-COPY requirements.txt .
+        stage('Wait Before Test') {
+            steps {
+                echo 'Waiting for 10 seconds before running tests...'
+                sleep time: 10, unit: 'SECONDS'  // Sleep for 10 seconds
+            }
+        }
 
-# Install the dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+            }
+        }
 
-# Copy the FastAPI app code into the container
-COPY ./app /app
+        stage('Wait Before Deploy') {
+            steps {
+                echo 'Waiting for 2 minutes before deploying...'
+                sleep time: 2, unit: 'MINUTES'  // Sleep for 2 minutes
+            }
+        }
 
-# Command to run the FastAPI app
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+            }
+        }
+    }
+}
