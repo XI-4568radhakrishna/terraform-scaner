@@ -1,37 +1,51 @@
 pipeline {
     agent any
 
+    environment {
+        TF_CLI_ARGS_apply="-auto-approve"
+    }
+
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                echo 'Building...'
+                git branch: 'main', url: 'https://github.com/your-repo.git'
             }
         }
 
-        stage('Wait Before Test') {
+        stage('Init Terraform') {
             steps {
-                echo 'Waiting for 10 seconds before running tests...'
-                sleep time: 10, unit: 'SECONDS'  // Sleep for 10 seconds
+                sh 'terraform init'
             }
         }
 
-        stage('Test') {
+        stage('Validate Terraform') {
             steps {
-                echo 'Testing...'
+                sh 'terraform validate'
             }
         }
 
-        stage('Wait Before Deploy') {
+        stage('Plan Terraform') {
             steps {
-                echo 'Waiting for 2 minutes before deploying...'
-                sleep time: 2, unit: 'MINUTES'  // Sleep for 2 minutes
+                sh 'terraform plan -out=tfplan'
             }
         }
 
-        stage('Deploy') {
+        stage('Apply Terraform') {
             steps {
-                echo 'Deploying...'
+                sh 'terraform apply tfplan'
             }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: '**/*.tfstate', fingerprint: true
+        }
+        success {
+            echo 'Terraform Infrastructure Applied Successfully'
+        }
+        failure {
+            echo 'Terraform Execution Failed'
         }
     }
 }
