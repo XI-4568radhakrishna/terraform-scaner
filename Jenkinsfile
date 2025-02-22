@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/your-repo/terraform-project.git'
+                git 'https://github.com/XI-4568radhakrishna/terraform-script.git'
             }
         }
         stage('Terraform Init') {
