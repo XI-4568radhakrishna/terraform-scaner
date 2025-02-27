@@ -31,11 +31,11 @@ variable "security_group_id" {
 
 }
 
-/*variable "private_ip" {
+variable "private_ip" {
   description = "Private IP address to associate with the instance in a VPC"
   type        = string
   default     = null
-}*/
+}
 
 variable "cidr_block" {
   description = "This is a variable of type string"
@@ -50,11 +50,11 @@ variable "availability_zone" {
 }
 
 
-/*variable "associate_public_ip_address" {
+variable "associate_public_ip_address" {
   description = "Whether to associate a public IP address with an instance in a VPC"
   type        = bool
   default     = null
-}*/
+}
 
 /*variable "capacity_reservation_specification" {
   description = "Describes an instance's Capacity Reservation targeting option"
