@@ -25,11 +25,11 @@ variable "subnet_id" {
 
 }
 
-variable "security_group_id" {
+/*variable "security_group_id" {
   description = "The ID of the existing security group"
   type        = string
 
-}
+}*/
 
 variable "private_ip" {
   description = "Private IP address to associate with the instance in a VPC"
@@ -37,11 +37,11 @@ variable "private_ip" {
   default     = null
 }
 
-variable "cidr_block" {
+/*variable "cidr_block" {
   description = "This is a variable of type string"
   type        = string
 
-}
+}*/
 
 variable "availability_zone" {
   description = "This is a variable of type string"
