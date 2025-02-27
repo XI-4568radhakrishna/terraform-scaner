@@ -114,7 +114,7 @@ resource "aws_instance" "aisdlc_instance" {
   availability_zone    = var.availability_zone
   subnet_id            = var.subnet_id
   security_groups      = [aws_security_group.sdlc_sg.name]
-  key_name             = var.key_name
+
   get_password_data           = var.get_password_data
   associate_public_ip_address = var.associate_public_ip_address
   private_ip                  = var.private_ip
