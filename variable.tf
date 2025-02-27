@@ -3,32 +3,32 @@
 ################################################################################
 
 variable "ami" {
- description = "This is a variable of type string"
- type        = string
- 
+  description = "This is a variable of type string"
+  type        = string
+
 }
 
 variable "instance_type" {
- description = "This is a variable of type string"
- type        = string
- 
+  description = "This is a variable of type string"
+  type        = string
+
 }
 variable "vpc_id" {
   description = "The ID of the existing VPC"
   type        = string
-  
+
 }
 
 variable "subnet_id" {
   description = "The ID of the existing subnet"
   type        = string
-  
+
 }
 
 variable "security_group_id" {
   description = "The ID of the existing security group"
   type        = string
-  
+
 }
 
 variable "private_ip" {
@@ -38,15 +38,15 @@ variable "private_ip" {
 }
 
 variable "cidr_block" {
- description = "This is a variable of type string"
- type        = string
- 
+  description = "This is a variable of type string"
+  type        = string
+
 }
 
 variable "availability_zone" {
- description = "This is a variable of type string"
- type        = string
- 
+  description = "This is a variable of type string"
+  type        = string
+
 }
 
 
