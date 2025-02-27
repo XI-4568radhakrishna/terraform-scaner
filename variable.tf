@@ -56,17 +56,17 @@ variable "associate_public_ip_address" {
   default     = null
 }
 
-variable "capacity_reservation_specification" {
+/*variable "capacity_reservation_specification" {
   description = "Describes an instance's Capacity Reservation targeting option"
   type        = any
   default     = {}
-}
+}*/
 
-variable "cpu_credits" {
+/*variable "cpu_credits" {
   description = "The credit option for CPU usage (unlimited or standard)"
   type        = string
   default     = null
-}
+}*/
 
 variable "disable_api_termination" {
   description = "If true, enables EC2 Instance Termination Protection"
@@ -74,45 +74,45 @@ variable "disable_api_termination" {
   default     = null
 }
 
-variable "ebs_block_device" {
+/*variable "ebs_block_device" {
   description = "Additional EBS block devices to attach to the instance"
   type        = list(any)
   default     = []
-}
+}*/
 
-variable "ebs_optimized" {
+/*variable "ebs_optimized" {
   description = "If true, the launched EC2 instance will be EBS-optimized"
   type        = bool
   default     = null
-}
+}*/
 
-variable "enclave_options_enabled" {
+/*variable "enclave_options_enabled" {
   description = "Whether Nitro Enclaves will be enabled on the instance. Defaults to `false`"
   type        = bool
   default     = null
-}
+}*/
 
-variable "ephemeral_block_device" {
+/*variable "ephemeral_block_device" {
   description = "Customize Ephemeral (also known as Instance Store) volumes on the instance"
   type        = list(map(string))
   default     = []
-}
+}*/
 
-variable "get_password_data" {
+/*variable "get_password_data" {
   description = "If true, wait for password data to become available and retrieve it"
   type        = bool
   default     = null
-}
+}*/
 
-variable "hibernation" {
+/*variable "hibernation" {
   description = "If true, the launched EC2 instance will support hibernation"
   type        = bool
   default     = null
-}
+}*/
 variable "key_name" {
   description = "Key name of the Key Pair to use for the instance; which can be managed using the `aws_key_pair` resource"
   type        = string
-  default     = null
+  default     = "AI-instance-key"
 }
 variable "metadata_options" {
   description = "Customize the metadata options of the instance"
@@ -124,23 +124,23 @@ variable "metadata_options" {
   }
 }
 
-variable "cpu_options" {
+/*variable "cpu_options" {
   description = "Defines CPU options to apply to the instance at launch time."
   type        = any
   default     = {}
-}
+}*/
 
-variable "cpu_core_count" {
+/*variable "cpu_core_count" {
   description = "Sets the number of CPU cores for an instance" # This option is only supported on creation of instance type that support CPU Options https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html#cpu-options-supported-instances-values
   type        = number
   default     = null
-}
+}*/
 
-variable "cpu_threads_per_core" {
+/*variable "cpu_threads_per_core" {
   description = "Sets the number of CPU threads per core for an instance (has no effect unless cpu_core_count is also set)"
   type        = number
   default     = null
-}
+}*/
 
 ################################################################################
 # IAM Role / Instance Profile
