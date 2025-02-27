@@ -146,11 +146,11 @@ variable "cpu_threads_per_core" {
 # IAM Role / Instance Profile
 ################################################################################
 
-variable "create_iam_instance_profile" {
+/*variable "create_iam_instance_profile" {
   description = "Determines whether an IAM instance profile is created or to use an existing IAM instance profile"
   type        = bool
   default     = false
-}
+}*/
 
 /*variable "iam_role_name" {
   description = "Name to use on IAM role created"
@@ -158,11 +158,11 @@ variable "create_iam_instance_profile" {
   default     = null
 }*/
 
-variable "iam_role_use_name_prefix" {
+/*variable "iam_role_use_name_prefix" {
   description = "Determines whether the IAM role name (`iam_role_name` or `name`) is used as a prefix"
   type        = bool
   default     = true
-}
+}*/
 
 /*variable "iam_role_path" {
   description = "IAM role path"
@@ -182,54 +182,54 @@ variable "iam_role_use_name_prefix" {
   default     = null
 }*/
 
-variable "iam_role_policies" {
+/*variable "iam_role_policies" {
   description = "Policies attached to the IAM role"
   type        = map(string)
   default     = {}
-}
+}*/
 
-variable "iam_role_tags" {
+/*variable "iam_role_tags" {
   description = "A map of additional tags to add to the IAM role/profile created"
   type        = map(string)
   default     = {}
-}
+}*/
 
 
 ################################################################################
 # ECR variables
 ################################################################################
-variable "repository_name" {
+/*variable "repository_name" {
   description = "Name of the ECR repository"
   type        = string
   default     = "aisdlc"
-}
+}*/
 
-variable "image_tag_mutability" {
+/*variable "image_tag_mutability" {
   description = "Whether to allow image tag overwrites (MUTABLE or IMMUTABLE)"
   type        = string
   default     = "IMMUTABLE"
-}
+}*/
 
-variable "image_retention_limit" {
+/*variable "image_retention_limit" {
   description = "Number of images to retain"
   type        = number
   default     = 10
-}
+}*/
 
-variable "enable_repo_policy" {
+/*variable "enable_repo_policy" {
   description = "Enable repository policy"
   type        = bool
   default     = false
-}
+}*/
 
-variable "repository_policy" {
+/*variable "repository_policy" {
   description = "ECR repository policy as JSON"
   type        = string
   default     = "{*}"
-}
+}*/
 
-variable "tags" {
+/*variable "tags" {
   description = "Tags to apply to the repository"
   type        = map(string)
   default     = {}
-}
+}*/
