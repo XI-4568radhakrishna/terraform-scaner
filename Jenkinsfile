@@ -21,6 +21,7 @@ pipeline {
             steps {
                 sh 'terraform validate'
             }
+        }
          stage('Install TFLint') {
             steps {
                 sh 'curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash'
@@ -31,8 +32,7 @@ pipeline {
                 sh 'tflint --init'
             }
         }
-            
-        }
+                 
         stage('Run tflint') {
             steps {
                 sh 'tflint --init && tflint'
