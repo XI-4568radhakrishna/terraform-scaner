@@ -31,11 +31,11 @@ variable "security_group_id" {
 
 }
 
-variable "private_ip" {
+/*variable "private_ip" {
   description = "Private IP address to associate with the instance in a VPC"
   type        = string
   default     = null
-}
+}*/
 
 variable "cidr_block" {
   description = "This is a variable of type string"
@@ -50,11 +50,11 @@ variable "availability_zone" {
 }
 
 
-variable "associate_public_ip_address" {
+/*variable "associate_public_ip_address" {
   description = "Whether to associate a public IP address with an instance in a VPC"
   type        = bool
   default     = null
-}
+}*/
 
 /*variable "capacity_reservation_specification" {
   description = "Describes an instance's Capacity Reservation targeting option"
@@ -68,11 +68,11 @@ variable "associate_public_ip_address" {
   default     = null
 }*/
 
-variable "disable_api_termination" {
+/*variable "disable_api_termination" {
   description = "If true, enables EC2 Instance Termination Protection"
   type        = bool
   default     = null
-}
+}*/
 
 /*variable "ebs_block_device" {
   description = "Additional EBS block devices to attach to the instance"
@@ -152,11 +152,11 @@ variable "create_iam_instance_profile" {
   default     = false
 }
 
-variable "iam_role_name" {
+/*variable "iam_role_name" {
   description = "Name to use on IAM role created"
   type        = string
   default     = null
-}
+}*/
 
 variable "iam_role_use_name_prefix" {
   description = "Determines whether the IAM role name (`iam_role_name` or `name`) is used as a prefix"
@@ -164,23 +164,23 @@ variable "iam_role_use_name_prefix" {
   default     = true
 }
 
-variable "iam_role_path" {
+/*variable "iam_role_path" {
   description = "IAM role path"
   type        = string
   default     = null
-}
+}*/
 
-variable "iam_role_description" {
+/*variable "iam_role_description" {
   description = "Description of the role"
   type        = string
   default     = null
-}
+}*/
 
-variable "iam_role_permissions_boundary" {
+/*variable "iam_role_permissions_boundary" {
   description = "ARN of the policy that is used to set the permissions boundary for the IAM role"
   type        = string
   default     = null
-}
+}*/
 
 variable "iam_role_policies" {
   description = "Policies attached to the IAM role"
