@@ -1,6 +1,3 @@
-rule "terraform_required_version" {
-  enabled = true
-}
 terraform {
   required_providers {
     aws = {
