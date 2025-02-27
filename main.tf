@@ -4,15 +4,15 @@ provider "aws" {
 
 ##create VPC 
 data "aws_vpc" "sdlc_vpc" {
-  id = var.vpc_id  # Replace with your existing VPC ID
+  id = var.vpc_id # Replace with your existing VPC ID
   tags = {
     Name = "sdlc-vpc"
-  } 
+  }
 }
 
 
 ##Create subnet
-  data "aws_subnet" "sdlc_subnet" {
+data "aws_subnet" "sdlc_subnet" {
   id = "subnet-87654321" # Replace with your actual Subnet ID
   tags = {
     Name = "sdlc-subnet"
@@ -107,19 +107,19 @@ resource "aws_security_group_rule" "allow_http" {
 
 # creating IAM roles and attaching to EC2 instance
 resource "aws_instance" "aisdlc_instance" {
-  ami                        = var.ami # Amazon Linux 2 AMI
-  instance_type              = var.instance_type
-  cpu_core_count             = var.cpu_core_count
-  cpu_threads_per_core       = var.cpu_threads_per_core
-  availability_zone          = var.availability_zone
-  subnet_id                  = var.subnet_id
-  security_groups            = [aws_security_group.sdlc_sg.name]
+  ami                  = var.ami # Amazon Linux 2 AMI
+  instance_type        = var.instance_type
+  cpu_core_count       = var.cpu_core_count
+  cpu_threads_per_core = var.cpu_threads_per_core
+  availability_zone    = var.availability_zone
+  subnet_id            = var.subnet_id
+  security_groups      = [aws_security_group.sdlc_sg.name]
 
-  get_password_data           =var.get_password_data
+  get_password_data           = var.get_password_data
   associate_public_ip_address = var.associate_public_ip_address
   private_ip                  = var.private_ip
-  
-  
+
+
   /*create_iam_instance_profile = true
   
   iam_role_policies = {
@@ -159,7 +159,7 @@ resource "aws_ec2_instance_metadata_defaults" "enforce-imdsv2" {
 
 ##Create an ECR Repository
 resource "aws_ecr_repository" "sdlc_repo" {
-  name = "sdlc-ecr-repo"  # Change to your repository name
+  name = "sdlc-ecr-repo" # Change to your repository name
 
   image_scanning_configuration {
     scan_on_push = true
@@ -256,7 +256,7 @@ resource "aws_eks_cluster" "sdlc_eks_cluster" {
   role_arn = aws_iam_role.eks_cluster_role.arn
 
   vpc_config {
-    subnet_ids = ["subnet-0ea8c55669718e445","subnet-0a4acccf6950db1c5"] # Replace with your subnet IDs
+    subnet_ids = ["subnet-0ea8c55669718e445", "subnet-0a4acccf6950db1c5"] # Replace with your subnet IDs
   }
 }
 
@@ -295,10 +295,10 @@ resource "aws_iam_role_policy_attachment" "ec2_container_registry_readonly" {
 }
 
 resource "aws_eks_node_group" "eks_nodes" {
-  cluster_name  = aws_eks_cluster.sdlc_eks_cluster.name
+  cluster_name    = aws_eks_cluster.sdlc_eks_cluster.name
   node_group_name = "eks-node-group"
-  node_role_arn = aws_iam_role.eks_node_role.arn
-  subnet_ids    = ["subnet-0ea8c55669718e445"] # Replace with your subnet IDs
+  node_role_arn   = aws_iam_role.eks_node_role.arn
+  subnet_ids      = ["subnet-0ea8c55669718e445"] # Replace with your subnet IDs
 
   scaling_config {
     desired_size = 1
