@@ -1,6 +1,6 @@
-provider "aws" {
+/*provider "aws" {
   region = "us-east-1" # Change to your preferred AWS region
-}
+}*/
 
 ##create VPC 
 data "aws_vpc" "sdlc_vpc" {
