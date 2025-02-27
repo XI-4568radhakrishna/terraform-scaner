@@ -147,7 +147,7 @@ resource "aws_key_pair" "generated_key" {
 }
 
 ##Save the private key locally
-resource "local_file" "sdlc_private_key" {
+resource "local_file" "private_key" {
   content  = tls_private_key.ssh_key.private_key_pem
   filename = "${path.module}/terraform-key.pem"
 }
