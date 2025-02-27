@@ -109,12 +109,12 @@ variable "associate_public_ip_address" {
   type        = bool
   default     = null
 }*/
-variable "key_name" {
+/*variable "key_name" {
   description = "Key name of the Key Pair to use for the instance; which can be managed using the `aws_key_pair` resource"
   type        = string
   default     = "AI-instance-key"
-}
-variable "metadata_options" {
+}*/
+/*variable "metadata_options" {
   description = "Customize the metadata options of the instance"
   type        = map(string)
   default = {
@@ -122,13 +122,13 @@ variable "metadata_options" {
     "http_put_response_hop_limit" = 2
     "http_tokens"                 = "optional"
   }
-}
+}*/
 
-variable "cpu_options" {
+/*variable "cpu_options" {
   description = "Defines CPU options to apply to the instance at launch time."
   type        = any
   default     = {}
-}
+}*/
 
 variable "cpu_core_count" {
   description = "Sets the number of CPU cores for an instance" # This option is only supported on creation of instance type that support CPU Options https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html#cpu-options-supported-instances-values
